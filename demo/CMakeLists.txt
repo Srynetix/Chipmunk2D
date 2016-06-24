@@ -32,7 +32,7 @@ set(chipmunk_demos_libraries
 if(APPLE)
 	FIND_LIBRARY(APPKIT AppKit)
 	FIND_LIBRARY(IOKIT IOKit)
-	
+
 	list(APPEND chipmunk_demos_libraries ${APPKIT} ${IOKIT})
 endif(APPLE)
 
@@ -45,7 +45,7 @@ file(GLOB chipmunk_demos_source_files "*.c")
 include_directories(${chipmunk_demos_include_dirs})
 link_directories(${chipmunk_demos_library_dirs})
 add_executable(chipmunk_demos ${chipmunk_demos_source_files})
-target_link_libraries(chipmunk_demos ${chipmunk_demos_libraries})
+target_link_libraries(chipmunk_demos "${chipmunk_demos_libraries} -lX11 -lpthread -lXrandr")
 
 # Tell MSVC to compile the code as C++.
 if(MSVC)
